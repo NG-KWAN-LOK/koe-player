@@ -39,6 +39,10 @@ A Chrome extension for language listening practice, powered by Google Cloud Text
 }
 ```
 
+### Generate Homework with AI
+
+Use the `/jp-listening-homework-generate` slash command to generate Japanese listening homework. It produces a `.md` file with questions and a `.json` file for TTS input.
+
 ## Project Structure
 
 ```
