@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Koe Player",
+  "version": "1.0",
+  "description": "Cloud TTS frontend for language listening practice",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "icons/icon128.png"
+  },
+  "permissions": ["storage", "unlimitedStorage"],
+  "host_permissions": ["https://texttospeech.googleapis.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'"
+  },
+  "icons": {
+    "128": "icons/icon128.png"
+  }
+}

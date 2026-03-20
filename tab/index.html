@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>Koe Player</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PIN Screen -->
+<div id="pin-screen" class="screen">
+  <div class="pin-card">
+    <div class="pin-icon">🔒</div>
+    <h2>Koe Player</h2>
+    <p id="pin-message" class="pin-msg">輸入 PIN 解鎖</p>
+    <input type="password" id="pin-input" maxlength="4" inputmode="numeric" placeholder="••••" autofocus>
+    <button id="pin-submit" class="btn-primary">解鎖</button>
+  </div>
+</div>
+
+<!-- Main App -->
+<div id="app" class="screen" style="display:none">
+  <header>
+    <button id="sidebar-toggle" class="icon-btn" title="切換側邊欄">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 5h14M3 10h14M3 15h14"/>
+      </svg>
+    </button>
+    <h1>Koe Player</h1>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar">
+      <div class="sidebar-section-title">已儲存作業</div>
+      <div id="assignment-list" class="assignment-list"></div>
+      <div class="sidebar-footer">
+        <button id="new-btn" class="sidebar-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg>
+          新作業
+        </button>
+        <button id="export-btn" class="sidebar-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 11v3h12v-3M8 2v8M5 7l3 3 3-3"/></svg>
+          匯出
+        </button>
+        <button id="import-btn" class="sidebar-btn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 11v3h12v-3M8 10V2M5 5l3-3 3 3"/></svg>
+          匯入
+        </button>
+        <input type="file" id="import-file" accept=".json" style="display:none">
+      </div>
+    </aside>
+
+    <main>
+      <!-- JSON Input Section -->
+      <div id="input-section" class="card">
+        <textarea id="json-input" placeholder="貼上 JSON..."></textarea>
+        <button id="load-btn" class="btn-primary">載入</button>
+      </div>
+
+      <!-- Player Bar -->
+      <div id="player-bar" class="player-bar">
+        <span id="player-label" class="player-label"></span>
+        <audio id="player-audio" controls></audio>
+        <button id="player-speed" class="speed-btn" title="播放速度">1x</button>
+      </div>
+
+      <!-- Line List Section -->
+      <div id="line-section" class="card" style="display:none">
+        <div id="lines"></div>
+        <div class="action-bar">
+          <button id="download-all-btn" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 11v3h12v-3M8 2v8M5 7l3 3 3-3"/></svg>
+            全部下載
+          </button>
+          <button id="save-assignment-btn" class="btn-secondary">儲存作業</button>
+          <button id="toggle-script-btn" class="btn-ghost">
+            顯示 Script <svg class="chevron" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5l3 3 3-3"/></svg>
+          </button>
+        </div>
+        <div id="script-view" class="script-view"></div>
+      </div>
+
+      <!-- Status -->
+      <div id="toast" class="toast"></div>
+    </main>
+  </div>
+</div>
+
+<script src="../lib/crypto.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

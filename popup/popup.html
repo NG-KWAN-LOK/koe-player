@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  width: 360px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #fafafa;
+  color: #1a1a1a;
+  padding: 20px;
+}
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.field { margin-bottom: 14px; }
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+.field input, .field select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #fff;
+  outline: none;
+  transition: border-color 150ms;
+}
+.field input:focus, .field select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+.voice-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.voice-group .field { margin-bottom: 0; }
+.status {
+  font-size: 12px;
+  color: #16a34a;
+  margin-bottom: 10px;
+  display: none;
+}
+.status.error { color: #ef4444; }
+.btn-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+button {
+  flex: 1;
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 150ms;
+}
+button:hover { transform: scale(1.02); }
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+}
+.btn-primary:hover { background: #1d4ed8; }
+.btn-secondary {
+  background: #fff;
+  color: #2563eb;
+  border: 1px solid #e5e7eb;
+}
+.btn-secondary:hover { background: rgba(37,99,235,0.05); }
+.divider {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 14px 0;
+}
+</style>
+</head>
+<body>
+  <h2>Koe Player 設定</h2>
+
+  <div class="field">
+    <label>PIN（4 位數）</label>
+    <input type="password" id="pin" maxlength="4" inputmode="numeric" pattern="\d{4}" placeholder="••••">
+  </div>
+
+  <div class="field">
+    <label id="apikey-label">API Key</label>
+    <input type="password" id="apikey" placeholder="貼上 Google Cloud API Key">
+  </div>
+
+  <div class="status" id="status"></div>
+
+  <hr class="divider">
+
+  <div class="voice-group">
+    <div class="field">
+      <label>ja-JP 女聲</label>
+      <select id="voice-ja-F"></select>
+    </div>
+    <div class="field">
+      <label>ja-JP 男聲</label>
+      <select id="voice-ja-M"></select>
+    </div>
+    <div class="field">
+      <label>yue-HK 女聲</label>
+      <select id="voice-yue-F"></select>
+    </div>
+    <div class="field">
+      <label>yue-HK 男聲</label>
+      <select id="voice-yue-M"></select>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn-primary" id="save-btn">儲存</button>
+    <button class="btn-secondary" id="open-btn">開啟 Dashboard →</button>
+  </div>
+
+  <script src="../lib/crypto.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
